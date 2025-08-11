@@ -1,6 +1,14 @@
 import { tokens } from "../theme";
 
-export const mockDataTeam = [
+export type MockDataTeam = {
+  id: number;
+  name: string;
+  email: string;
+  age: number;
+  phone: string;
+  access: string;
+};
+export const mockDataTeam: Array<MockDataTeam> = [
   {
     id: 1,
     name: "Jon Snow",
@@ -75,7 +83,18 @@ export const mockDataTeam = [
   },
 ];
 
-export const mockDataContacts = [
+export type MockDataContacts = {
+  id: number;
+  name: string;
+  email: string;
+  age: number;
+  phone: string;
+  address: string;
+  city: string;
+  zipCode: string;
+  registrarId: number;
+};
+export const mockDataContacts: Array<MockDataContacts> = [
   {
     id: 1,
     name: "Jon Snow",
@@ -199,7 +218,15 @@ export const mockDataContacts = [
   },
 ];
 
-export const mockDataInvoices = [
+export type MockDataInvoices = {
+  id: number;
+  name: string;
+  email: string;
+  cost: string;
+  phone: string;
+  date: string;
+};
+export const mockDataInvoices: Array<MockDataInvoices> = [
   {
     id: 1,
     name: "Jon Snow",
@@ -266,7 +293,13 @@ export const mockDataInvoices = [
   },
 ];
 
-export const mockTransactions = [
+export type MockTransactions = {
+  txId: string;
+  user: string;
+  date: string;
+  cost: string;
+};
+export const mockTransactions: Array<MockTransactions> = [
   {
     txId: "01e4dsa",
     user: "johndoe",
@@ -317,7 +350,19 @@ export const mockTransactions = [
   },
 ];
 
-export const mockBarData = [
+export type MockBarData = {
+  country: string;
+  "hot dog": number;
+  "hot dogColor": string;
+  burger: number;
+  burgerColor: string;
+  kebab: number;
+  kebabColor: string;
+  donut: number;
+  donutColor: string;
+};
+
+export const mockBarData: Array<MockBarData> = [
   {
     country: "AD",
     "hot dog": 137,
@@ -397,7 +442,13 @@ export const mockBarData = [
   },
 ];
 
-export const mockPieData = [
+export type MockPieData = {
+  id: string;
+  label: string;
+  value: number;
+  color: string;
+};
+export const mockPieData: Array<MockPieData> = [
   {
     id: "hack",
     label: "hack",
@@ -430,7 +481,13 @@ export const mockPieData = [
   },
 ];
 
-export const mockLineData = [
+export type MockLineData = {
+  id: string;
+  color: string;
+  data: Array<{ x: string; y: number }>;
+};
+
+export const mockLineData: Array<MockLineData> = [
   {
     id: "japan",
     color: tokens("dark").greenAccent[500],
@@ -595,7 +652,11 @@ export const mockLineData = [
   },
 ];
 
-export const mockGeographyData = [
+export type MockGeographyData = {
+  id: string;
+  value: number;
+};
+export const mockGeographyData: Array<MockGeographyData> = [
   {
     id: "AFG",
     value: 520600,
