@@ -1,5 +1,5 @@
 import { Box, Button, TextField, useMediaQuery } from "@mui/material";
-import { Formik } from "formik";
+import { Formik, type FormikHelpers } from "formik";
 import * as yup from "yup";
 import Header from "../../components/Header";
 
@@ -38,7 +38,10 @@ const userSchema = yup.object().shape({
 const Form = () => {
   const isNonMobile = useMediaQuery("(min-widt:600px)");
 
-  const handleFormSubmit = (values) => {
+  const handleFormSubmit = (
+    values: User,
+    formikHelpers: FormikHelpers<User>
+  ) => {
     console.log(values);
   };
 
