@@ -40,7 +40,7 @@ const Form = () => {
 
   const handleFormSubmit = (
     values: User,
-    formikHelpers: FormikHelpers<User>
+    _formikHelpers: FormikHelpers<User>
   ) => {
     console.log(values);
   };
