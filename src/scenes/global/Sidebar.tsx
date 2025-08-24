@@ -17,6 +17,7 @@ import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import { useState } from "react";
+import userImg from "../../assets/user.png";
 
 const Item = ({
   title,
@@ -103,7 +104,7 @@ const Sidebar = () => {
                   alt="profile-user"
                   width="100px"
                   height="100px"
-                  src={"../../src/assets/user.png"}
+                  src={userImg}
                   style={{ cursor: "pointer", borderRadius: "50%" }}
                 />
               </Box>
