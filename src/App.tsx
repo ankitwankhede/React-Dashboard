@@ -12,36 +12,46 @@ import Form from "./scenes/form";
 import FAQ from "./scenes/faq";
 // import Geography from "./scenes/geography";
 import Calendar from "./scenes/calendar";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Sidebar from "./scenes/global/Sidebar";
+import { AuthProvider } from "./context/AuthContext";
+import Login from "./scenes/login";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   const [theme, colorMode] = useMode();
+  const location = useLocation(); // 👈 get current route
+  const isLoginPage = location.pathname === "/login";
 
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <div className="app">
-          <Sidebar />
-          <main className="content">
-            <Topbar />
-            <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/team" element={<Team />} />
+        <AuthProvider>
+          <CssBaseline />
+          <div className="app">
+            {!isLoginPage && <Sidebar />}
+            <main className="content">
+              {!isLoginPage && <Topbar />}
+              <Routes>
+                <Route path="/login" element={<Login />} />
 
-              <Route path="/contacts" element={<Contacts />} />
-              <Route path="/invoices" element={<Invoices />} />
-              <Route path="/form" element={<Form />} />
-              <Route path="/calendar" element={<Calendar />} />
-              <Route path="/faq" element={<FAQ />} />
-              <Route path="/bar" element={<Bar />} />
-              {/* <Route path="/pie" element={<Pie />} />
+                <Route element={<ProtectedRoute />}>
+                  <Route path="/" element={<Dashboard />} />
+                  <Route path="/team" element={<Team />} />
+                  <Route path="/contacts" element={<Contacts />} />
+                  <Route path="/invoices" element={<Invoices />} />
+                  <Route path="/form" element={<Form />} />
+                  <Route path="/calendar" element={<Calendar />} />
+                  <Route path="/faq" element={<FAQ />} />
+                  <Route path="/bar" element={<Bar />} />
+                  {/* <Route path="/pie" element={<Pie />} />
               <Route path="/line" element={<Line />} />
               <Route path="/geography" element={<Geography />} /> */}
-            </Routes>
-          </main>
-        </div>
+                </Route>
+              </Routes>
+            </main>
+          </div>
+        </AuthProvider>
       </ThemeProvider>
     </ColorModeContext.Provider>
   );
